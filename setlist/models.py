@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime, date
 
 STATUS = ((0, 'Waiting Confirmation'), (1, 'Published'))
 
@@ -13,11 +14,12 @@ class Venue(models.Model):
         return self.name
 
 class Gig(models.Model):
-    fakedate = models.CharField(max_length=200, null=True)
+    # fakedate = models.CharField(max_length=200, null=True)
+    date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.fakedate
+        return f'{self.venue} at {self.date}'
 
 
 class Song(models.Model):
@@ -25,7 +27,6 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 
