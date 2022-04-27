@@ -3,11 +3,21 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, 'Waiting Confirmation'), (1, 'Published'))
 
-class Gig(models.Model):
+class Venue(models.Model):
+    name = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
+    
 
     def __str__(self):
-        return self.city
+        # return f"{self.name} in {self.city}"
+        return self.name
+
+class Gig(models.Model):
+    fakedate = models.CharField(max_length=200, null=True)
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.fakedate
 
 
 class Song(models.Model):
@@ -15,6 +25,8 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+
+
 
 
 class Setlist(models.Model):
