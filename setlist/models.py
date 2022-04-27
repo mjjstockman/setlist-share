@@ -23,4 +23,4 @@ class Setlist(models.Model):
     song = models.ManyToManyField(Song)
 
     def __str__(self):
-        return self.gig.city
+        return self.gig
