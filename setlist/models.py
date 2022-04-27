@@ -19,8 +19,9 @@ class Song(models.Model):
 
 class Setlist(models.Model):
     gig = models.OneToOneField(Gig, on_delete=models.CASCADE, null=True)
-    # user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='setlist_author')
     song = models.ManyToManyField(Song)
+    status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__(self):
         return self.gig
