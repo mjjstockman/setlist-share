@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
-from home.views import home
+from django.urls import path
+from .views import get_setlists
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -8,5 +8,5 @@ urlpatterns = [
     # path('summernote/', include('django_summernote.urls')),
     # path('accounts/', include('allauth.urls')),
     # path('/', include('home.urls')),
-    path('', home, name='home')
+    path('', get_setlists, name='setlist'),
 ]

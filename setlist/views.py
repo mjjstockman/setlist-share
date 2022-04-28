@@ -7,4 +7,4 @@ def get_setlists(request):
     context = {
         'setlists': setlists
     }
-    return render(request, 'setlist/setlists', context)
+    return render(request, 'setlist/setlists.html', context)
