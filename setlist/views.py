@@ -1,30 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Setlist
 from .forms import SetlistForm
 # Create your views here.
 
 def get_setlists(request):
     setlists = Setlist.objects.all()
-    # form = SetlistForm()
     context = {
         'setlists': setlists,
-        # 'form': form
     }
     return render(request, 'setlist/setlists.html', context)
 
 
 
 def add(request):
-    # setlists = Setlist.objects.all()
     form = SetlistForm()
     if request.method == 'POST':
-        # print(request.POST)
         form = SetlistForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('')
 
     context = {
-        # 'setlists': setlists,
         'form': form
+    }
+    return render(request, 'setlist/add.html', context)
+
+
+def edit(request, pk):
+    setlist = Setlist.objects.get(id=pk)
+    form = SetlistForm(instance=setlist)
+
+    if request.method == 'POST':
+        form = SetlistForm(request.POST, instance=setlist)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {
+        'form': form,
     }
     return render(request, 'setlist/add.html', context)
