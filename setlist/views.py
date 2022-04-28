@@ -17,6 +17,12 @@ def get_setlists(request):
 def add(request):
     # setlists = Setlist.objects.all()
     form = SetlistForm()
+    if request.method == 'POST':
+        # print(request.POST)
+        form = SetlistForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     context = {
         # 'setlists': setlists,
         'form': form
