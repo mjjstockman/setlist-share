@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    FR$OM SETLISTS!!!!!!
+    <!-- {{ setlists }} -->
+    {% for setlist in setlists %}
+        {{ setlist }}
+        {% for song in setlist.song.all %}
+            {{ song.title }}
+        {% endfor %}
+    {% endfor %}
 </body>
 </html>
