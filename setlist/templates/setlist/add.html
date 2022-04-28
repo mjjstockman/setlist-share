@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {% for setlist in setlists %}
+    <!-- {% for setlist in setlists %}
         {{ setlist }} by {{ setlist.author }}, id is {{ setlist.author.id }}
         logged in id is {{ user.id }}
         {% for song in setlist.song.all %}
@@ -17,13 +17,13 @@
             <button type="button">Edit!</button>
             <button type="button">Delete</button>
         {% endif %}
-    {% endfor %}
+    {% endfor %} -->
 
-    <!-- <p>ADD A SETLIST</p>
+    <p>ADD A SETLIST</p>
     <form action="add" method="POST">
         {% csrf_token %}
         {{ form }}
         <button type="submit">Submit Setlist</button>
-    </form> -->
+    </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import get_setlists
+from .views import get_setlists, add
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -9,4 +9,5 @@ urlpatterns = [
     # path('accounts/', include('allauth.urls')),
     # path('/', include('home.urls')),
     path('', get_setlists, name='setlist'),
+    path('add/', add, name='add_setlist'),
 ]

@@ -5,9 +5,20 @@ from .forms import SetlistForm
 
 def get_setlists(request):
     setlists = Setlist.objects.all()
-    form = SetlistForm()
+    # form = SetlistForm()
     context = {
         'setlists': setlists,
-        'form': form
+        # 'form': form
     }
     return render(request, 'setlist/setlists.html', context)
+
+
+
+def add(request):
+    # setlists = Setlist.objects.all()
+    form = SetlistForm()
+    context = {
+        # 'setlists': setlists,
+        'form': form
+    }
+    return render(request, 'setlist/add.html', context)
