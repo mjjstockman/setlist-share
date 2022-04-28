@@ -4,7 +4,7 @@ from .forms import SetlistForm
 # Create your views here.
 
 def get_setlists(request):
-    setlists = Setlist.objects.all()
+    setlists = Setlist.objects.filter(status=1)
     context = {
         'setlists': setlists,
     }
