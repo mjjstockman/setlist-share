@@ -7,12 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- {{ setlists }} -->
     {% for setlist in setlists %}
-        {{ setlist }}
+        {{ setlist }} by {{ setlist.author }}, id is {{ setlist.author.id }}
+        logged in id is {{ user.id }}
         {% for song in setlist.song.all %}
             {{ song.title }}
         {% endfor %}
+        {% if user.id == setlist.author.id  %}
+            <button type="button">Edit!</button>
+            <button type="button">Delete</button>
+        {% endif %}
     {% endfor %}
 </body>
 </html>
