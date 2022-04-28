@@ -40,3 +40,16 @@ def edit(request, pk):
         'form': form,
     }
     return render(request, 'setlist/add.html', context)
+
+
+def delete(request, pk):
+    setlist = Setlist.objects.get(id=pk)
+
+    if request.method == 'POST':
+        setlist.delete()
+        return redirect('/')
+        
+    context = {
+        'setlist': setlist,
+    }
+    return render(request, 'setlist/delete.html', context)
