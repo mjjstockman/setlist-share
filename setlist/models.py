@@ -22,12 +22,18 @@ class Gig(models.Model):
         return f'{self.venue} at {self.date}'
 
 
-class Song(models.Model):
+class Release(models.Model):
     title = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title
 
+class Song(models.Model):
+    title = models.CharField(max_length=200)
+    release = models.ManyToManyField(Release)
+
+    def __str__(self):
+        return self.title
 
 
 class Setlist(models.Model):
@@ -38,3 +44,5 @@ class Setlist(models.Model):
 
     def __str__(self):
         return f"{self.gig}"
+
+
